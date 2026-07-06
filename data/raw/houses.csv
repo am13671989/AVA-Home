@@ -1,0 +1,13 @@
+surface,rooms,bedrooms,city,postal_code,garage,balcony,garden,year,condition,price
+80,4,3,Lyon,69003,1,1,0,2010,good,320000
+65,3,2,Marseille,13001,0,1,0,1998,good,240000
+120,5,4,Paris,75015,1,1,1,2015,new,950000
+45,2,1,Lyon,69007,0,1,0,2005,average,210000
+95,4,3,Grenoble,38000,1,1,1,2012,good,355000
+70,3,2,Toulouse,31000,0,1,0,2001,good,265000
+150,6,4,Paris,75016,1,1,1,2020,new,1450000
+52,2,1,Marseille,13006,0,0,0,1985,renovation,160000
+110,5,3,Lyon,69006,1,1,0,2018,new,610000
+88,4,3,Toulouse,31000,1,0,1,2010,good,335000
+76,3,2,Grenoble,38100,0,1,0,1995,average,230000
+130,5,4,Marseille,13008,1,1,1,2016,new,620000
