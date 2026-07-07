@@ -1,9 +1,11 @@
 package com.ava.home.ui.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -14,9 +16,12 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ava.home.R
 import com.ava.home.ui.components.HeroHeader
 import com.ava.home.ui.components.PrimaryButton
 import com.ava.home.ui.components.SectionCard
@@ -31,6 +36,17 @@ fun WelcomeScreen(onStart: () -> Unit) {
             .padding(20.dp),
         verticalArrangement = Arrangement.spacedBy(18.dp)
     ) {
+        SectionCard {
+            Image(
+                painter = painterResource(id = R.drawable.ava_home_brand),
+                contentDescription = "Ava Home logo",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(190.dp),
+                contentScale = ContentScale.Fit
+            )
+        }
+
         HeroHeader(
             title = "Home price estimation",
             subtitle = "Estimate a property's market value, compare signals, and save predictions for later decisions."
