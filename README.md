@@ -109,6 +109,30 @@ Create `backend/.env` from `backend/.env.example`, then:
 docker compose up -d --build
 ```
 
+## Android Mobile App
+
+The first Android prototype lives in:
+
+```text
+mobile/ava-mobile
+```
+
+Open that folder in Android Studio, then run the `app` configuration. The first version includes:
+
+- Welcome screen
+- Property input form
+- Local estimated price result
+- Saved prediction history
+- Settings screen
+
+Command-line debug build:
+
+```powershell
+cd C:\Users\Ali\Documents\Codex\ava-home\mobile\ava-mobile
+$env:JAVA_HOME='C:\Program Files\Android\Android Studio\jbr'
+.\gradlew.bat :app:assembleDebug
+```
+
 ## Roadmap
 
 1. Build Ava Home API with FastAPI
