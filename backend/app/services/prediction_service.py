@@ -63,6 +63,7 @@ def _input_frame(data: HomePredictionInput, features: list[str] | None = None) -
         "garden": data.garden,
         "year": data.year,
         "condition": data.condition,
+        "data_source": "user_prediction",
     }
     if features:
         values = {feature: values.get(feature, "") for feature in features}

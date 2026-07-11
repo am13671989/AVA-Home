@@ -31,7 +31,7 @@ def main() -> None:
     ]
     categorical_features = [
         column
-        for column in ["country_iso2", "country", "city", "condition"]
+        for column in ["country_iso2", "country", "city", "condition", "data_source"]
         if column in x.columns
     ]
 

@@ -1,0 +1,87 @@
+country_iso2,country,city,price_per_m2_eur,source_type
+AL,Albania,Tirana,1800,city_baseline
+AD,Andorra,Andorra la Vella,5200,city_baseline
+AT,Austria,Vienna,6200,city_baseline
+AT,Austria,Graz,4100,city_baseline
+AT,Austria,Linz,3900,city_baseline
+BY,Belarus,Minsk,1400,city_baseline
+BE,Belgium,Brussels,4300,city_baseline
+BE,Belgium,Antwerp,3600,city_baseline
+BE,Belgium,Ghent,3700,city_baseline
+BA,Bosnia and Herzegovina,Sarajevo,1800,city_baseline
+BG,Bulgaria,Sofia,2300,city_baseline
+BG,Bulgaria,Plovdiv,1600,city_baseline
+HR,Croatia,Zagreb,2800,city_baseline
+HR,Croatia,Split,3600,city_baseline
+CY,Cyprus,Nicosia,2600,city_baseline
+CY,Cyprus,Limassol,3900,city_baseline
+CZ,Czechia,Prague,5200,city_baseline
+CZ,Czechia,Brno,3600,city_baseline
+DK,Denmark,Copenhagen,7200,city_baseline
+DK,Denmark,Aarhus,5200,city_baseline
+EE,Estonia,Tallinn,3300,city_baseline
+FI,Finland,Helsinki,6100,city_baseline
+FI,Finland,Tampere,3600,city_baseline
+FR,France,Paris,10300,city_baseline
+FR,France,Lyon,5200,city_baseline
+FR,France,Marseille,3800,city_baseline
+FR,France,Toulouse,4100,city_baseline
+FR,France,Bordeaux,5000,city_baseline
+DE,Germany,Berlin,5600,city_baseline
+DE,Germany,Hamburg,6200,city_baseline
+DE,Germany,Munich,9400,city_baseline
+DE,Germany,Cologne,4700,city_baseline
+GR,Greece,Athens,3000,city_baseline
+GR,Greece,Thessaloniki,2300,city_baseline
+HU,Hungary,Budapest,3300,city_baseline
+IS,Iceland,Reykjavik,6200,city_baseline
+IE,Ireland,Dublin,6500,city_baseline
+IE,Ireland,Cork,3900,city_baseline
+IT,Italy,Rome,5200,city_baseline
+IT,Italy,Milan,5900,city_baseline
+IT,Italy,Naples,3300,city_baseline
+IT,Italy,Turin,3600,city_baseline
+XK,Kosovo,Pristina,1600,city_baseline
+LV,Latvia,Riga,2400,city_baseline
+LI,Liechtenstein,Vaduz,9300,city_baseline
+LT,Lithuania,Vilnius,3000,city_baseline
+LT,Lithuania,Kaunas,2400,city_baseline
+LU,Luxembourg,Luxembourg,10500,city_baseline
+MT,Malta,Valletta,4700,city_baseline
+MD,Moldova,Chisinau,1300,city_baseline
+ME,Montenegro,Podgorica,2100,city_baseline
+NL,Netherlands,Amsterdam,7800,city_baseline
+NL,Netherlands,Rotterdam,5200,city_baseline
+NL,Netherlands,The Hague,5600,city_baseline
+MK,North Macedonia,Skopje,1600,city_baseline
+NO,Norway,Oslo,7000,city_baseline
+NO,Norway,Bergen,5200,city_baseline
+PL,Poland,Warsaw,4100,city_baseline
+PL,Poland,Krakow,3300,city_baseline
+PL,Poland,Wroclaw,3400,city_baseline
+PT,Portugal,Lisbon,5200,city_baseline
+PT,Portugal,Porto,3600,city_baseline
+RO,Romania,Bucharest,2600,city_baseline
+RO,Romania,Cluj-Napoca,2900,city_baseline
+RU,Russia,Moscow,4300,city_baseline
+RU,Russia,Saint Petersburg,3100,city_baseline
+SM,San Marino,San Marino,3300,city_baseline
+RS,Serbia,Belgrade,2400,city_baseline
+SK,Slovakia,Bratislava,3400,city_baseline
+SI,Slovenia,Ljubljana,4300,city_baseline
+ES,Spain,Madrid,4700,city_baseline
+ES,Spain,Barcelona,5100,city_baseline
+ES,Spain,Valencia,3200,city_baseline
+ES,Spain,Seville,3000,city_baseline
+SE,Sweden,Stockholm,7600,city_baseline
+SE,Sweden,Gothenburg,5200,city_baseline
+CH,Switzerland,Zurich,13500,city_baseline
+CH,Switzerland,Geneva,13200,city_baseline
+CH,Switzerland,Basel,9800,city_baseline
+TR,Turkey,Istanbul,2800,city_baseline
+TR,Turkey,Ankara,1800,city_baseline
+UA,Ukraine,Kyiv,1700,city_baseline
+UA,Ukraine,Lviv,1500,city_baseline
+GB,United Kingdom,London,9800,city_baseline
+GB,United Kingdom,Manchester,4200,city_baseline
+GB,United Kingdom,Birmingham,3600,city_baseline

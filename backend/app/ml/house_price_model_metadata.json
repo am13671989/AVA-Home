@@ -3,8 +3,8 @@
   "n_estimators": 80,
   "max_depth": 18,
   "min_samples_leaf": 3,
-  "trained_at": "2026-07-11T11:35:07.267193+00:00",
-  "training_rows": 20000,
+  "trained_at": "2026-07-11T12:38:17.911047+00:00",
+  "training_rows": 23096,
   "features": [
     "country_iso2",
     "country",
@@ -16,7 +16,8 @@
     "balcony",
     "garden",
     "year",
-    "condition"
+    "condition",
+    "data_source"
   ],
   "numeric_features": [
     "surface",
@@ -31,10 +32,11 @@
     "country_iso2",
     "country",
     "city",
-    "condition"
+    "condition",
+    "data_source"
   ],
   "target": "price",
-  "mae": 91282.99,
-  "r2": 0.335,
+  "mae": 90450.7,
+  "r2": 0.59,
   "data_file": "C:\\Users\\Ali\\Documents\\Codex\\ava-home\\data\\processed\\houses_clean.csv"
 }
