@@ -10,7 +10,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Apartment
-import androidx.compose.material.icons.filled.AutoGraph
 import androidx.compose.material.icons.filled.LocationCity
 import androidx.compose.material.icons.filled.SquareFoot
 import androidx.compose.material3.Icon
@@ -67,18 +66,6 @@ fun ResultScreen(
                     InfoLine(Icons.Default.LocationCity, result.city)
                     InfoLine(Icons.Default.SquareFoot, "${input.surface.ifBlank { "80" }} m2")
                     InfoLine(Icons.Default.Apartment, "${formatEuro(result.pricePerSquareMeter)} / m2")
-                }
-            }
-        }
-
-        SectionCard {
-            Text(tr(languageCode, "model_details"), fontWeight = FontWeight.Black)
-            InfoLine(Icons.Default.AutoGraph, result.modelType)
-            Text("${tr(languageCode, "source")}: ${result.source}", color = Slate)
-            Text("${tr(languageCode, "training_scope")}: ${result.dataScope}", color = Slate)
-            result.priceRangeLow?.let { low ->
-                result.priceRangeHigh?.let { high ->
-                    Text("${tr(languageCode, "estimated_range")}: ${formatEuro(low)} - ${formatEuro(high)}", color = Slate)
                 }
             }
         }

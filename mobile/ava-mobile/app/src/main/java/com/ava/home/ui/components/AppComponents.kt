@@ -17,7 +17,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.QueryStats
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -201,8 +200,7 @@ fun AvaBottomBar(current: AvaHomeScreen, languageCode: String, onNavigate: (AvaH
     val items = listOf(
         NavItem(AvaHomeScreen.Welcome, tr(languageCode, "home"), Icons.Default.Home),
         NavItem(AvaHomeScreen.Form, tr(languageCode, "predict"), Icons.Default.QueryStats),
-        NavItem(AvaHomeScreen.Saved, tr(languageCode, "saved"), Icons.Default.Bookmark),
-        NavItem(AvaHomeScreen.Settings, tr(languageCode, "settings"), Icons.Default.Settings)
+        NavItem(AvaHomeScreen.Saved, tr(languageCode, "saved"), Icons.Default.Bookmark)
     )
     NavigationBar(containerColor = CardWhite) {
         items.forEach { item ->

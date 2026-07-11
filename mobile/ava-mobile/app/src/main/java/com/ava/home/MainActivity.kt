@@ -45,7 +45,6 @@ import com.ava.home.ui.components.SectionCard
 import com.ava.home.ui.screens.PropertyFormScreen
 import com.ava.home.ui.screens.ResultScreen
 import com.ava.home.ui.screens.SavedScreen
-import com.ava.home.ui.screens.SettingsScreen
 import com.ava.home.ui.screens.WelcomeScreen
 import com.ava.home.ui.theme.AvaHomeTheme
 import java.text.SimpleDateFormat
@@ -147,7 +146,6 @@ fun AvaHomeApp() {
                         savedPredictions = emptyList()
                     }
                 )
-                AvaHomeScreen.Settings -> SettingsScreen(languageCode = language.code)
             }
 
             IconButton(

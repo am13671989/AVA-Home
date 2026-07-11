@@ -39,6 +39,5 @@ enum class AvaHomeScreen {
     Welcome,
     Form,
     Result,
-    Saved,
-    Settings
+    Saved
 }
