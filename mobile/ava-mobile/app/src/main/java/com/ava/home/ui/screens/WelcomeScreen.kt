@@ -22,6 +22,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ava.home.R
+import com.ava.home.data.AppLanguage
+import com.ava.home.data.appLanguages
+import com.ava.home.data.tr
+import com.ava.home.ui.components.ChoiceField
 import com.ava.home.ui.components.HeroHeader
 import com.ava.home.ui.components.PrimaryButton
 import com.ava.home.ui.components.SectionCard
@@ -29,7 +33,11 @@ import com.ava.home.ui.theme.Mint
 import com.ava.home.ui.theme.Slate
 
 @Composable
-fun WelcomeScreen(onStart: () -> Unit) {
+fun WelcomeScreen(
+    language: AppLanguage,
+    onLanguageChange: (AppLanguage) -> Unit,
+    onStart: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -48,18 +56,29 @@ fun WelcomeScreen(onStart: () -> Unit) {
         }
 
         HeroHeader(
-            title = "Home price estimation",
-            subtitle = "Estimate a property's market value, compare signals, and save predictions for later decisions."
+            title = tr(language.code, "welcome_title"),
+            subtitle = tr(language.code, "welcome_subtitle")
         )
 
         SectionCard {
-            FeatureLine("Enter property details", "Surface, rooms, city, year, condition, and features.", Icons.Default.HomeWork)
-            FeatureLine("Get an instant estimate", "The first version uses a local model-style estimator.", Icons.Default.Insights)
-            FeatureLine("Save your predictions", "Keep a lightweight history before backend sync is added.", Icons.Default.Save)
+            ChoiceField(
+                label = tr(language.code, "language"),
+                value = language.label,
+                options = appLanguages.map { it.label },
+                onSelected = { selected ->
+                    appLanguages.firstOrNull { it.label == selected }?.let(onLanguageChange)
+                }
+            )
+        }
+
+        SectionCard {
+            FeatureLine(tr(language.code, "feature_details"), tr(language.code, "feature_details_body"), Icons.Default.HomeWork)
+            FeatureLine(tr(language.code, "feature_model"), tr(language.code, "feature_model_body"), Icons.Default.Insights)
+            FeatureLine(tr(language.code, "feature_save"), tr(language.code, "feature_save_body"), Icons.Default.Save)
         }
 
         Spacer(modifier = Modifier.weight(1f))
-        PrimaryButton(text = "Start property estimate", onClick = onStart)
+        PrimaryButton(text = tr(language.code, "start"), onClick = onStart)
     }
 }
 

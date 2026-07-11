@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ava.home.data.SavedPrediction
 import com.ava.home.data.formatEuro
+import com.ava.home.data.tr
 import com.ava.home.ui.components.PrimaryButton
 import com.ava.home.ui.components.SectionCard
 import com.ava.home.ui.theme.Mint
@@ -28,6 +29,7 @@ import com.ava.home.ui.theme.Slate
 @Composable
 fun SavedScreen(
     predictions: List<SavedPrediction>,
+    languageCode: String,
     onNewPrediction: () -> Unit,
     onClear: () -> Unit
 ) {
@@ -37,16 +39,16 @@ fun SavedScreen(
             .padding(20.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        Text("Saved predictions", fontSize = 30.sp, fontWeight = FontWeight.Black)
-        Text("Your latest local estimates. Backend sync will come in the next version.", color = Slate)
+        Text(tr(languageCode, "saved_predictions"), fontSize = 30.sp, fontWeight = FontWeight.Black)
+        Text(tr(languageCode, "saved_intro"), color = Slate)
 
         if (predictions.isEmpty()) {
             SectionCard {
                 Icon(Icons.Default.Bookmark, contentDescription = "Saved", tint = Mint)
-                Text("No saved predictions yet", fontWeight = FontWeight.Black)
-                Text("Create a first home estimate and save it here.", color = Slate)
+                Text(tr(languageCode, "no_saved"), fontWeight = FontWeight.Black)
+                Text(tr(languageCode, "no_saved_body"), color = Slate)
             }
-            PrimaryButton("Create prediction", onClick = onNewPrediction)
+            PrimaryButton(tr(languageCode, "create_prediction"), onClick = onNewPrediction)
         } else {
             LazyColumn(verticalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.weight(1f)) {
                 items(predictions) { item ->
@@ -65,8 +67,8 @@ fun SavedScreen(
                     }
                 }
             }
-            PrimaryButton("New prediction", onClick = onNewPrediction)
-            PrimaryButton("Clear saved predictions", onClick = onClear)
+            PrimaryButton(tr(languageCode, "new_prediction"), onClick = onNewPrediction)
+            PrimaryButton(tr(languageCode, "clear_saved"), onClick = onClear)
         }
     }
 }

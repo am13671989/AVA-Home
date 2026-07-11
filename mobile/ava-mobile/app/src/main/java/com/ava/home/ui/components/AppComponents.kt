@@ -47,6 +47,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ava.home.data.AvaHomeScreen
+import com.ava.home.data.tr
 import com.ava.home.ui.theme.Amber
 import com.ava.home.ui.theme.CardWhite
 import com.ava.home.ui.theme.Coral
@@ -196,12 +197,12 @@ fun ConfidenceGauge(value: Float, label: String) {
 }
 
 @Composable
-fun AvaBottomBar(current: AvaHomeScreen, onNavigate: (AvaHomeScreen) -> Unit) {
+fun AvaBottomBar(current: AvaHomeScreen, languageCode: String, onNavigate: (AvaHomeScreen) -> Unit) {
     val items = listOf(
-        NavItem(AvaHomeScreen.Welcome, "Home", Icons.Default.Home),
-        NavItem(AvaHomeScreen.Form, "Predict", Icons.Default.QueryStats),
-        NavItem(AvaHomeScreen.Saved, "Saved", Icons.Default.Bookmark),
-        NavItem(AvaHomeScreen.Settings, "Settings", Icons.Default.Settings)
+        NavItem(AvaHomeScreen.Welcome, tr(languageCode, "home"), Icons.Default.Home),
+        NavItem(AvaHomeScreen.Form, tr(languageCode, "predict"), Icons.Default.QueryStats),
+        NavItem(AvaHomeScreen.Saved, tr(languageCode, "saved"), Icons.Default.Bookmark),
+        NavItem(AvaHomeScreen.Settings, tr(languageCode, "settings"), Icons.Default.Settings)
     )
     NavigationBar(containerColor = CardWhite) {
         items.forEach { item ->

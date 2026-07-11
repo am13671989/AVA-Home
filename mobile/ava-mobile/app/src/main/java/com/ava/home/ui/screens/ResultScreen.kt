@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.sp
 import com.ava.home.data.PredictionResult
 import com.ava.home.data.PropertyInput
 import com.ava.home.data.formatEuro
+import com.ava.home.data.tr
 import com.ava.home.ui.components.ConfidenceGauge
 import com.ava.home.ui.components.PrimaryButton
 import com.ava.home.ui.components.SectionCard
@@ -34,6 +35,7 @@ import com.ava.home.ui.theme.Slate
 fun ResultScreen(
     input: PropertyInput,
     result: PredictionResult?,
+    languageCode: String,
     onSave: () -> Unit,
     onEdit: () -> Unit
 ) {
@@ -44,11 +46,11 @@ fun ResultScreen(
             .padding(20.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        Text("Estimated market value", fontSize = 28.sp, fontWeight = FontWeight.Black)
+        Text(tr(languageCode, "estimated_market_value"), fontSize = 28.sp, fontWeight = FontWeight.Black)
 
         if (result == null) {
-            Text("Calculating the estimate...", color = Slate)
-            PrimaryButton("Open property form", onClick = onEdit)
+            Text(tr(languageCode, "calculating"), color = Slate)
+            PrimaryButton(tr(languageCode, "open_form"), onClick = onEdit)
             return@Column
         }
 
@@ -60,7 +62,7 @@ fun ResultScreen(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                ConfidenceGauge(result.confidence, "Confidence")
+                ConfidenceGauge(result.confidence, tr(languageCode, "confidence"))
                 Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     InfoLine(Icons.Default.LocationCity, result.city)
                     InfoLine(Icons.Default.SquareFoot, "${input.surface.ifBlank { "80" }} m2")
@@ -70,19 +72,19 @@ fun ResultScreen(
         }
 
         SectionCard {
-            Text("Model details", fontWeight = FontWeight.Black)
+            Text(tr(languageCode, "model_details"), fontWeight = FontWeight.Black)
             InfoLine(Icons.Default.AutoGraph, result.modelType)
-            Text("Source: ${result.source}", color = Slate)
-            Text("Training scope: ${result.dataScope}", color = Slate)
+            Text("${tr(languageCode, "source")}: ${result.source}", color = Slate)
+            Text("${tr(languageCode, "training_scope")}: ${result.dataScope}", color = Slate)
             result.priceRangeLow?.let { low ->
                 result.priceRangeHigh?.let { high ->
-                    Text("Estimated range: ${formatEuro(low)} - ${formatEuro(high)}", color = Slate)
+                    Text("${tr(languageCode, "estimated_range")}: ${formatEuro(low)} - ${formatEuro(high)}", color = Slate)
                 }
             }
         }
 
-        PrimaryButton("Save prediction", onClick = onSave)
-        PrimaryButton("Edit property details", onClick = onEdit)
+        PrimaryButton(tr(languageCode, "save_prediction"), onClick = onSave)
+        PrimaryButton(tr(languageCode, "edit_details"), onClick = onEdit)
     }
 }
 

@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.sp
 import com.ava.home.data.PropertyInput
 import com.ava.home.data.propertyConditions
 import com.ava.home.data.supportedCities
+import com.ava.home.data.tr
 import com.ava.home.ui.components.ChoiceField
 import com.ava.home.ui.components.FeatureChip
 import com.ava.home.ui.components.NumberField
@@ -27,6 +28,7 @@ import com.ava.home.ui.theme.Slate
 @Composable
 fun PropertyFormScreen(
     input: PropertyInput,
+    languageCode: String,
     onInputChange: (PropertyInput) -> Unit,
     onPredict: () -> Unit
 ) {
@@ -37,32 +39,32 @@ fun PropertyFormScreen(
             .padding(20.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        Text("Property details", fontSize = 30.sp, fontWeight = FontWeight.Black)
-        Text("Fill the essential fields for the first Ava Home price estimation.", color = Slate)
+        Text(tr(languageCode, "property_details"), fontSize = 30.sp, fontWeight = FontWeight.Black)
+        Text(tr(languageCode, "property_intro"), color = Slate)
 
         SectionCard {
-            ChoiceField("City", input.city, supportedCities) { onInputChange(input.copy(city = it)) }
-            NumberField("Postal code", input.postalCode, { onInputChange(input.copy(postalCode = it)) })
+            ChoiceField(tr(languageCode, "city"), input.city, supportedCities) { onInputChange(input.copy(city = it)) }
+            NumberField(tr(languageCode, "postal_code"), input.postalCode, { onInputChange(input.copy(postalCode = it)) })
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxWidth()) {
-                NumberField("Surface m2", input.surface, { onInputChange(input.copy(surface = it)) }, Modifier.weight(1f))
-                NumberField("Rooms", input.rooms, { onInputChange(input.copy(rooms = it)) }, Modifier.weight(1f))
+                NumberField(tr(languageCode, "surface"), input.surface, { onInputChange(input.copy(surface = it)) }, Modifier.weight(1f))
+                NumberField(tr(languageCode, "rooms"), input.rooms, { onInputChange(input.copy(rooms = it)) }, Modifier.weight(1f))
             }
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxWidth()) {
-                NumberField("Bedrooms", input.bedrooms, { onInputChange(input.copy(bedrooms = it)) }, Modifier.weight(1f))
-                NumberField("Year", input.year, { onInputChange(input.copy(year = it)) }, Modifier.weight(1f))
+                NumberField(tr(languageCode, "bedrooms"), input.bedrooms, { onInputChange(input.copy(bedrooms = it)) }, Modifier.weight(1f))
+                NumberField(tr(languageCode, "year"), input.year, { onInputChange(input.copy(year = it)) }, Modifier.weight(1f))
             }
-            ChoiceField("Condition", input.condition, propertyConditions) { onInputChange(input.copy(condition = it)) }
+            ChoiceField(tr(languageCode, "condition"), input.condition, propertyConditions) { onInputChange(input.copy(condition = it)) }
         }
 
         SectionCard {
-            Text("Property features", fontWeight = FontWeight.Black)
+            Text(tr(languageCode, "features"), fontWeight = FontWeight.Black)
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth()) {
-                FeatureChip("Garage", input.garage) { onInputChange(input.copy(garage = !input.garage)) }
-                FeatureChip("Balcony", input.balcony) { onInputChange(input.copy(balcony = !input.balcony)) }
-                FeatureChip("Garden", input.garden) { onInputChange(input.copy(garden = !input.garden)) }
+                FeatureChip(tr(languageCode, "garage"), input.garage) { onInputChange(input.copy(garage = !input.garage)) }
+                FeatureChip(tr(languageCode, "balcony"), input.balcony) { onInputChange(input.copy(balcony = !input.balcony)) }
+                FeatureChip(tr(languageCode, "garden"), input.garden) { onInputChange(input.copy(garden = !input.garden)) }
             }
         }
 
-        PrimaryButton("Calculate estimated price", onClick = onPredict)
+        PrimaryButton(tr(languageCode, "calculate"), onClick = onPredict)
     }
 }
