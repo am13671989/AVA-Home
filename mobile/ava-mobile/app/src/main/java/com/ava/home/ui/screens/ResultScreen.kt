@@ -10,6 +10,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Apartment
+import androidx.compose.material.icons.filled.AutoGraph
 import androidx.compose.material.icons.filled.LocationCity
 import androidx.compose.material.icons.filled.SquareFoot
 import androidx.compose.material3.Icon
@@ -46,7 +47,7 @@ fun ResultScreen(
         Text("Estimated market value", fontSize = 28.sp, fontWeight = FontWeight.Black)
 
         if (result == null) {
-            Text("No prediction yet. Go to the form and calculate a first estimate.", color = Slate)
+            Text("Calculating the estimate...", color = Slate)
             PrimaryButton("Open property form", onClick = onEdit)
             return@Column
         }
@@ -69,9 +70,15 @@ fun ResultScreen(
         }
 
         SectionCard {
-            Text("Decision notes", fontWeight = FontWeight.Black)
-            Text("This first mobile version mirrors the PDF MVP: property data in, estimated price out, prediction saved locally.", color = Slate)
-            Text("Next professional step: connect this screen to FastAPI /api/home/predict and store results in PostgreSQL.", color = Slate)
+            Text("Model details", fontWeight = FontWeight.Black)
+            InfoLine(Icons.Default.AutoGraph, result.modelType)
+            Text("Source: ${result.source}", color = Slate)
+            Text("Training scope: ${result.dataScope}", color = Slate)
+            result.priceRangeLow?.let { low ->
+                result.priceRangeHigh?.let { high ->
+                    Text("Estimated range: ${formatEuro(low)} - ${formatEuro(high)}", color = Slate)
+                }
+            }
         }
 
         PrimaryButton("Save prediction", onClick = onSave)

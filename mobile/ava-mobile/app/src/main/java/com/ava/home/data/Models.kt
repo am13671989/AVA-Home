@@ -18,7 +18,12 @@ data class PredictionResult(
     val confidence: Float,
     val pricePerSquareMeter: Int,
     val city: String,
-    val summary: String
+    val summary: String,
+    val modelType: String = "Local estimator",
+    val dataScope: String = "mobile fallback",
+    val priceRangeLow: Int? = null,
+    val priceRangeHigh: Int? = null,
+    val source: String = "local"
 )
 
 data class SavedPrediction(

@@ -1,6 +1,8 @@
 package com.ava.home
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -19,6 +21,7 @@ import com.ava.home.data.PredictionResult
 import com.ava.home.data.PropertyInput
 import com.ava.home.data.SavedPrediction
 import com.ava.home.data.predictPropertyPrice
+import com.ava.home.network.AvaHomeBackendClient
 import com.ava.home.storage.PredictionStorage
 import com.ava.home.ui.components.AvaBottomBar
 import com.ava.home.ui.screens.PropertyFormScreen
@@ -57,8 +60,15 @@ fun AvaHomeApp() {
     }
 
     fun calculate() {
-        result = predictPropertyPrice(input)
         screen = AvaHomeScreen.Result
+        result = null
+        Thread {
+            val prediction = AvaHomeBackendClient.predict(input)
+                ?: predictPropertyPrice(input)
+            Handler(Looper.getMainLooper()).post {
+                result = prediction
+            }
+        }.start()
     }
 
     fun saveCurrentPrediction() {

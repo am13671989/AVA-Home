@@ -36,7 +36,12 @@ fun predictPropertyPrice(input: PropertyInput): PredictionResult {
         confidence = confidence,
         pricePerSquareMeter = predicted / surface,
         city = input.city,
-        summary = "Based on surface, rooms, location, features, year, and condition."
+        summary = "Fallback estimate based on local European city baselines.",
+        modelType = "Local baseline estimator",
+        dataScope = "mobile fallback",
+        priceRangeLow = (predicted * 0.75).roundToInt(),
+        priceRangeHigh = (predicted * 1.25).roundToInt(),
+        source = "local"
     )
 }
 
