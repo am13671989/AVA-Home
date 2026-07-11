@@ -6,6 +6,9 @@ __pycache__/
 venv/
 backend/app/ml/*.pkl
 data/processed/*.csv
+data/raw/*.zip
+data/raw/*.txt
+data/raw/dvf_*.csv
 .pytest_cache/
 .idea/
 .vscode/

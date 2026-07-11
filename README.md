@@ -101,6 +101,26 @@ Example response:
 }
 ```
 
+## Build Training Data From Official DVF Data
+
+The project includes a data builder for the official French DVF open dataset.
+
+```powershell
+cd C:\Users\Ali\Documents\Codex\ava-home
+.\.venv\Scripts\activate
+python training\build_dvf_dataset.py --year 2024 --max-rows 50000
+python training\train_model.py
+```
+
+This writes:
+
+```text
+data/processed/houses_clean.csv
+backend/app/ml/house_price_model.pkl
+```
+
+Large downloaded raw files are ignored by Git.
+
 ## Docker
 
 Create `backend/.env` from `backend/.env.example`, then:
