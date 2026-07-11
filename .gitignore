@@ -5,6 +5,7 @@ __pycache__/
 .venv/
 venv/
 backend/app/ml/*.pkl
+!backend/app/ml/house_price_model.pkl
 data/processed/*.csv
 data/raw/*.zip
 data/raw/*.txt

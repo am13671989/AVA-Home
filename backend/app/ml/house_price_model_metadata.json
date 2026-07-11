@@ -1,0 +1,40 @@
+{
+  "model_type": "RandomForestRegressor",
+  "n_estimators": 80,
+  "max_depth": 18,
+  "min_samples_leaf": 3,
+  "trained_at": "2026-07-11T11:35:07.267193+00:00",
+  "training_rows": 20000,
+  "features": [
+    "country_iso2",
+    "country",
+    "surface",
+    "rooms",
+    "bedrooms",
+    "city",
+    "garage",
+    "balcony",
+    "garden",
+    "year",
+    "condition"
+  ],
+  "numeric_features": [
+    "surface",
+    "rooms",
+    "bedrooms",
+    "garage",
+    "balcony",
+    "garden",
+    "year"
+  ],
+  "categorical_features": [
+    "country_iso2",
+    "country",
+    "city",
+    "condition"
+  ],
+  "target": "price",
+  "mae": 91282.99,
+  "r2": 0.335,
+  "data_file": "C:\\Users\\Ali\\Documents\\Codex\\ava-home\\data\\processed\\houses_clean.csv"
+}

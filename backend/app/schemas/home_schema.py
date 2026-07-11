@@ -2,6 +2,8 @@ from pydantic import BaseModel, Field
 
 
 class HomePredictionInput(BaseModel):
+    country: str | None = None
+    country_iso2: str | None = None
     surface: float = Field(..., gt=0, description="Property surface in square meters")
     rooms: int = Field(..., ge=1)
     bedrooms: int = Field(..., ge=0)
@@ -19,3 +21,8 @@ class HomePredictionOutput(BaseModel):
     currency: str = "EUR"
     confidence_score: float
     message: str
+    model_type: str = "fallback"
+    data_scope: str = "local"
+    estimated_price_per_m2: float | None = None
+    price_range_low: float | None = None
+    price_range_high: float | None = None

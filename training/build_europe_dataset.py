@@ -40,8 +40,9 @@ def main() -> None:
     frames = [build_france(year=args.france_year, max_rows=args.france_rows)]
     data = pd.concat(frames, ignore_index=True)
 
-    # Keep backward-compatible model columns until the regressor is upgraded to include country.
     model_columns = [
+        "country_iso2",
+        "country",
         "surface",
         "rooms",
         "bedrooms",
