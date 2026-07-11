@@ -30,3 +30,16 @@ Recommended next improvements:
 - Add market indicators by city and quarter.
 - Train per-country models when additional official datasets are added.
 - Consider gradient boosting models after the baseline Random Forest.
+
+## European Expansion
+
+The project now includes:
+
+- `data/reference/europe_city_targets.csv`: major European cities to cover.
+- `data/reference/europe_property_sources.csv`: source registry for official/open property data by country.
+- `training/build_europe_dataset.py`: multi-country training builder.
+
+At the moment, only France/DVF is implemented because it provides usable open property-level rows. Other countries need source-specific connectors or API/data access. Many official European sources publish aggregates instead of property-level rows, so the model will likely need two layers:
+
+1. A property-level model where transaction rows include surface, rooms, and city.
+2. A city-baseline model using average price per square meter where only aggregate data is available.

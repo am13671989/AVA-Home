@@ -121,6 +121,24 @@ backend/app/ml/house_price_model.pkl
 
 Large downloaded raw files are ignored by Git.
 
+## European Training Expansion
+
+The project includes a European target-city list and source registry:
+
+```text
+data/reference/europe_city_targets.csv
+data/reference/europe_property_sources.csv
+```
+
+Build the currently implemented European dataset:
+
+```powershell
+python training\build_europe_dataset.py --france-year 2024 --france-rows 50000
+python training\train_model.py
+```
+
+Only France/DVF is implemented today. Other countries require official source connectors or API access before they can be used in the same model.
+
 ## Docker
 
 Create `backend/.env` from `backend/.env.example`, then:

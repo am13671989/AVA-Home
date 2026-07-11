@@ -1,0 +1,46 @@
+country_iso2,country,source_name,coverage,training_value,status,notes
+FR,France,DVF - Demandes de valeurs foncieres,Official transaction data,property_rows,implemented,Has price surface rooms city postal code for houses/apartments.
+GB,United Kingdom,HM Land Registry Price Paid Data,Official transaction data,transaction_rows,planned,Good sale prices but no surface or rooms; requires enrichment for ML features.
+IE,Ireland,Residential Property Price Register,Official transaction data,transaction_rows,planned,Good sale prices but limited property features.
+ES,Spain,MITMA / notarial / cadastral market statistics,Official statistics,city_aggregates,planned,Useful for city averages; property-level features may require paid/partner data.
+IT,Italy,Agenzia Entrate OMI quotations,Official market quotations,zone_aggregates,planned,Useful for city/zone price per m2 baseline.
+NL,Netherlands,Kadaster / CBS housing market data,Official statistics,aggregates,planned,Property-level transaction data may not be fully open.
+DE,Germany,Statistical offices / Gutachterausschuss reports,Official/regional reports,aggregates,planned,Fragmented by region; may need paid data for property rows.
+PT,Portugal,INE / municipal housing statistics,Official statistics,city_aggregates,planned,Useful for city average model.
+BE,Belgium,Statbel real estate statistics,Official statistics,aggregates,planned,Useful for regional/city average signals.
+AT,Austria,Statistics Austria real estate price data,Official statistics,aggregates,planned,Useful for national/regional trends.
+CH,Switzerland,FSO / cantonal market statistics,Official statistics,aggregates,planned,Use city/regional averages where available.
+SE,Sweden,Statistics Sweden / real estate price data,Official statistics,aggregates,planned,May need enrichment for property-level features.
+NO,Norway,Statistics Norway housing prices,Official statistics,aggregates,planned,Useful for city/region baselines.
+DK,Denmark,Statistics Denmark property sales,Official statistics,aggregates,planned,Potential official source.
+FI,Finland,Statistics Finland dwelling prices,Official statistics,aggregates,planned,Useful for city average baseline.
+PL,Poland,Statistics Poland / NBP housing data,Official statistics,city_aggregates,planned,Useful for major city quarterly prices.
+CZ,Czechia,Official statistics / cadastral data,Official statistics,aggregates,planned,Needs source-specific connector.
+HU,Hungary,Hungarian Central Statistical Office,Official statistics,aggregates,planned,Needs source-specific connector.
+RO,Romania,INS / market reports,Official or public reports,aggregates,planned,Needs source-specific connector.
+GR,Greece,Bank of Greece property indicators,Official statistics,aggregates,planned,Useful for regional trends.
+BG,Bulgaria,National Statistical Institute housing price index,Official statistics,aggregates,planned,May be country/regional only.
+HR,Croatia,Official property statistics,Official statistics,aggregates,planned,Needs source-specific connector.
+SI,Slovenia,Surveying and Mapping Authority property market,Official statistics,aggregates,planned,Potential useful official source.
+SK,Slovakia,National Bank / statistics office property prices,Official statistics,aggregates,planned,Needs connector.
+EE,Estonia,Land Board transaction data,Official transaction data,property_rows_or_aggregates,planned,Promising official source.
+LV,Latvia,Official cadastral/statistical data,Official statistics,aggregates,planned,Needs connector.
+LT,Lithuania,Registry Centre / statistics,Official statistics,aggregates,planned,Needs connector.
+LU,Luxembourg,STATEC / housing observatory,Official statistics,aggregates,planned,Useful for aggregates.
+MT,Malta,NSO property price indicators,Official statistics,aggregates,planned,Needs connector.
+CY,Cyprus,Official property price indices,Official statistics,aggregates,planned,Needs connector.
+IS,Iceland,Registers Iceland / Statistics Iceland,Official statistics,aggregates,planned,Needs connector.
+UA,Ukraine,Open/official market sources,Public/official,unknown,planned,Data availability depends on source and current conditions.
+AL,Albania,Public market sources,Public/official,unknown,planned,Needs legally reusable source.
+AD,Andorra,Public market sources,Public/official,unknown,planned,Needs legally reusable source.
+BA,Bosnia and Herzegovina,Public market sources,Public/official,unknown,planned,Needs legally reusable source.
+BY,Belarus,Public market sources,Public/official,unknown,planned,Needs legally reusable source.
+LI,Liechtenstein,Public market sources,Public/official,unknown,planned,Needs legally reusable source.
+MD,Moldova,Public market sources,Public/official,unknown,planned,Needs legally reusable source.
+ME,Montenegro,Public market sources,Public/official,unknown,planned,Needs legally reusable source.
+MK,North Macedonia,Public market sources,Public/official,unknown,planned,Needs legally reusable source.
+RS,Serbia,Public market sources,Public/official,unknown,planned,Needs legally reusable source.
+XK,Kosovo,Public market sources,Public/official,unknown,planned,Needs legally reusable source.
+RU,Russia,Public market sources,Public/official,unknown,planned,Needs legally reusable source.
+SM,San Marino,Public market sources,Public/official,unknown,planned,Needs legally reusable source.
+TR,Turkey,Official statistics / public market sources,Public/official,aggregates,planned,European-side city coverage can start with Istanbul.

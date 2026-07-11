@@ -1,0 +1,87 @@
+country_iso2,country,city,priority
+AL,Albania,Tirana,1
+AD,Andorra,Andorra la Vella,1
+AT,Austria,Vienna,1
+AT,Austria,Graz,2
+AT,Austria,Linz,3
+BY,Belarus,Minsk,1
+BE,Belgium,Brussels,1
+BE,Belgium,Antwerp,2
+BE,Belgium,Ghent,3
+BA,Bosnia and Herzegovina,Sarajevo,1
+BG,Bulgaria,Sofia,1
+BG,Bulgaria,Plovdiv,2
+HR,Croatia,Zagreb,1
+HR,Croatia,Split,2
+CY,Cyprus,Nicosia,1
+CY,Cyprus,Limassol,2
+CZ,Czechia,Prague,1
+CZ,Czechia,Brno,2
+DK,Denmark,Copenhagen,1
+DK,Denmark,Aarhus,2
+EE,Estonia,Tallinn,1
+FI,Finland,Helsinki,1
+FI,Finland,Tampere,2
+FR,France,Paris,1
+FR,France,Lyon,2
+FR,France,Marseille,3
+FR,France,Toulouse,4
+FR,France,Bordeaux,5
+DE,Germany,Berlin,1
+DE,Germany,Hamburg,2
+DE,Germany,Munich,3
+DE,Germany,Cologne,4
+GR,Greece,Athens,1
+GR,Greece,Thessaloniki,2
+HU,Hungary,Budapest,1
+IS,Iceland,Reykjavik,1
+IE,Ireland,Dublin,1
+IE,Ireland,Cork,2
+IT,Italy,Rome,1
+IT,Italy,Milan,2
+IT,Italy,Naples,3
+IT,Italy,Turin,4
+XK,Kosovo,Pristina,1
+LV,Latvia,Riga,1
+LI,Liechtenstein,Vaduz,1
+LT,Lithuania,Vilnius,1
+LT,Lithuania,Kaunas,2
+LU,Luxembourg,Luxembourg,1
+MT,Malta,Valletta,1
+MD,Moldova,Chisinau,1
+ME,Montenegro,Podgorica,1
+NL,Netherlands,Amsterdam,1
+NL,Netherlands,Rotterdam,2
+NL,Netherlands,The Hague,3
+MK,North Macedonia,Skopje,1
+NO,Norway,Oslo,1
+NO,Norway,Bergen,2
+PL,Poland,Warsaw,1
+PL,Poland,Krakow,2
+PL,Poland,Wroclaw,3
+PT,Portugal,Lisbon,1
+PT,Portugal,Porto,2
+RO,Romania,Bucharest,1
+RO,Romania,Cluj-Napoca,2
+RU,Russia,Moscow,1
+RU,Russia,Saint Petersburg,2
+SM,San Marino,San Marino,1
+RS,Serbia,Belgrade,1
+SK,Slovakia,Bratislava,1
+SI,Slovenia,Ljubljana,1
+ES,Spain,Madrid,1
+ES,Spain,Barcelona,2
+ES,Spain,Valencia,3
+ES,Spain,Seville,4
+SE,Sweden,Stockholm,1
+SE,Sweden,Gothenburg,2
+CH,Switzerland,Zurich,1
+CH,Switzerland,Geneva,2
+CH,Switzerland,Basel,3
+TR,Turkey,Istanbul,1
+TR,Turkey,Ankara,2
+UA,Ukraine,Kyiv,1
+UA,Ukraine,Lviv,2
+GB,United Kingdom,London,1
+GB,United Kingdom,Manchester,2
+GB,United Kingdom,Birmingham,3
