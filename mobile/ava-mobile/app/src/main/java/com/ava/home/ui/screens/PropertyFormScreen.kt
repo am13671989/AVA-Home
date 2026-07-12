@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ava.home.data.PropertyInput
 import com.ava.home.data.propertyConditions
+import com.ava.home.data.supportedCountries
 import com.ava.home.data.supportedCities
 import com.ava.home.data.tr
 import com.ava.home.ui.components.ChoiceField
@@ -43,7 +44,12 @@ fun PropertyFormScreen(
         Text(tr(languageCode, "property_intro"), color = Slate)
 
         SectionCard {
-            ChoiceField(tr(languageCode, "city"), input.city, supportedCities) { onInputChange(input.copy(city = it)) }
+            ChoiceField("Country", input.country, supportedCountries) { country ->
+                onInputChange(input.copy(country = country, city = supportedCities(country).first()))
+            }
+            ChoiceField(tr(languageCode, "city"), input.city, supportedCities(input.country)) {
+                onInputChange(input.copy(city = it))
+            }
             NumberField(tr(languageCode, "postal_code"), input.postalCode, { onInputChange(input.copy(postalCode = it)) })
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxWidth()) {
                 NumberField(tr(languageCode, "surface"), input.surface, { onInputChange(input.copy(surface = it)) }, Modifier.weight(1f))

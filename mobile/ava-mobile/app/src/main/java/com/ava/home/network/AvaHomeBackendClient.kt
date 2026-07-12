@@ -26,6 +26,8 @@ object AvaHomeBackendClient {
                 .put("rooms", input.rooms.toIntOrNull() ?: 3)
                 .put("bedrooms", input.bedrooms.toIntOrNull() ?: 2)
                 .put("city", input.city)
+                .put("country_iso2", if (input.country == "Spain") "ES" else "FR")
+                .put("country", input.country)
                 .put("postal_code", input.postalCode)
                 .put("garage", if (input.garage) 1 else 0)
                 .put("balcony", if (input.balcony) 1 else 0)
@@ -62,6 +64,34 @@ object AvaHomeBackendClient {
             )
         } catch (_: Exception) {
             null
+        }
+    }
+
+    fun sendFeedback(
+        message: String,
+        language: String,
+        currentScreen: String,
+    ): Boolean {
+        return try {
+            val connection = (URL("$BASE_URL/api/feedback").openConnection() as HttpURLConnection).apply {
+                requestMethod = "POST"
+                connectTimeout = 5000
+                readTimeout = 10000
+                doOutput = true
+                setRequestProperty("Content-Type", "application/json")
+            }
+            val body = JSONObject()
+                .put("message", message)
+                .put("language", language)
+                .put("app_version", "0.1")
+                .put("platform", "android")
+                .put("current_screen", currentScreen)
+            OutputStreamWriter(connection.outputStream).use { it.write(body.toString()) }
+            val success = connection.responseCode == 201
+            connection.disconnect()
+            success
+        } catch (_: Exception) {
+            false
         }
     }
 }

@@ -9,6 +9,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -27,10 +30,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.ava.home.data.AvaHomeScreen
+import com.ava.home.R
 import com.ava.home.data.PredictionResult
 import com.ava.home.data.PropertyInput
 import com.ava.home.data.SavedPrediction
@@ -75,6 +82,8 @@ fun AvaHomeApp() {
     var menuOpen by remember { mutableStateOf(false) }
     var quickFeedback by remember { mutableStateOf("") }
     var feedbackSaved by remember { mutableStateOf(false) }
+    var feedbackSending by remember { mutableStateOf(false) }
+    var feedbackError by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
         savedPredictions = storage.load()
@@ -110,14 +119,54 @@ fun AvaHomeApp() {
         screen = AvaHomeScreen.Saved
     }
 
-    Scaffold(
-        bottomBar = {
-            AvaBottomBar(current = screen, languageCode = language.code) { destination ->
-                screen = destination
+    fun submitFeedback() {
+        val message = quickFeedback.trim()
+        if (message.isEmpty() || feedbackSending) return
+        feedbackSending = true
+        feedbackSaved = false
+        feedbackError = false
+        Thread {
+            val sent = AvaHomeBackendClient.sendFeedback(
+                message = message,
+                language = language.code,
+                currentScreen = screen.name,
+            )
+            Handler(Looper.getMainLooper()).post {
+                feedbackSending = false
+                feedbackSaved = sent
+                feedbackError = !sent
+                if (sent) quickFeedback = ""
             }
-        }
-    ) { padding ->
-        Box(modifier = Modifier.padding(padding)) {
+        }.start()
+    }
+
+    Box(modifier = Modifier.fillMaxSize()) {
+        Image(
+            painter = painterResource(R.drawable.ava_home_background),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize()
+        )
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    Color.White.copy(
+                        alpha = if (screen == AvaHomeScreen.Welcome) 0.16f else 0.72f
+                    )
+                )
+        )
+        Scaffold(
+            containerColor = Color.Transparent,
+            bottomBar = {
+                if (screen != AvaHomeScreen.Welcome) {
+                    AvaBottomBar(current = screen, languageCode = language.code) { destination ->
+                        screen = destination
+                    }
+                }
+            }
+        ) { padding ->
+            Box(modifier = Modifier.padding(padding)) {
             when (screen) {
                 AvaHomeScreen.Welcome -> WelcomeScreen(
                     language = language,
@@ -148,19 +197,21 @@ fun AvaHomeApp() {
                 )
             }
 
-            IconButton(
-                onClick = { menuOpen = true },
-                modifier = Modifier
-                    .align(Alignment.TopStart)
-                    .padding(8.dp)
-            ) {
-                Icon(Icons.Default.Menu, contentDescription = tr(language.code, "menu"))
+            if (screen != AvaHomeScreen.Welcome) {
+                IconButton(
+                    onClick = { menuOpen = true },
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(8.dp)
+                ) {
+                    Icon(Icons.Default.Menu, contentDescription = tr(language.code, "menu"))
+                }
             }
 
             if (menuOpen) {
                 SectionCard(
                     modifier = Modifier
-                        .align(Alignment.TopStart)
+                        .align(Alignment.TopEnd)
                         .padding(start = 14.dp, top = 56.dp, end = 14.dp)
                 ) {
                     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
@@ -183,19 +234,25 @@ fun AvaHomeApp() {
                             onValueChange = {
                                 quickFeedback = it
                                 feedbackSaved = false
+                                feedbackError = false
                             },
                             label = { Text(tr(language.code, "feedback_placeholder")) },
                             modifier = Modifier.fillMaxWidth()
                         )
-                        PrimaryButton(tr(language.code, "send_feedback")) {
-                            feedbackSaved = quickFeedback.isNotBlank()
-                        }
+                        PrimaryButton(
+                            if (feedbackSending) "Sending..." else tr(language.code, "send_feedback"),
+                            onClick = ::submitFeedback,
+                        )
                         if (feedbackSaved) {
                             Text(tr(language.code, "feedback_saved"))
+                        }
+                        if (feedbackError) {
+                            Text("Feedback could not be sent. Check the API connection and try again.", color = Color(0xFFB91C1C))
                         }
                     }
                 }
             }
         }
     }
+}
 }

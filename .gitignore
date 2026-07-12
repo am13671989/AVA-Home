@@ -6,6 +6,8 @@ __pycache__/
 venv/
 backend/app/ml/*.pkl
 !backend/app/ml/house_price_model.pkl
+!backend/app/ml/spain_house_price_model.pkl
+!backend/app/ml/france_house_price_model.pkl
 data/processed/*.csv
 data/raw/*.zip
 data/raw/*.txt
@@ -13,3 +15,4 @@ data/raw/dvf_*.csv
 .pytest_cache/
 .idea/
 .vscode/
+*.db

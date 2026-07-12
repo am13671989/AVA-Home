@@ -1,6 +1,7 @@
 package com.ava.home.data
 
 data class PropertyInput(
+    val country: String = "France",
     val surface: String = "",
     val rooms: String = "",
     val bedrooms: String = "",

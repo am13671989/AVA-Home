@@ -3,15 +3,16 @@ package com.ava.home.ui.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.HomeWork
 import androidx.compose.material.icons.filled.Insights
-import androidx.compose.material.icons.filled.Save
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -36,28 +37,27 @@ import com.ava.home.ui.theme.Slate
 fun WelcomeScreen(
     language: AppLanguage,
     onLanguageChange: (AppLanguage) -> Unit,
-    onStart: () -> Unit
+    onStart: () -> Unit,
 ) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(20.dp),
-        verticalArrangement = Arrangement.spacedBy(18.dp)
+            .verticalScroll(rememberScrollState())
+            .padding(horizontal = 20.dp, vertical = 18.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         SectionCard {
             Image(
-                painter = painterResource(id = R.drawable.ava_home_brand),
+                painter = painterResource(R.drawable.ava_home_brand),
                 contentDescription = "Ava Home logo",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(190.dp),
-                contentScale = ContentScale.Fit
+                contentScale = ContentScale.Fit,
+                modifier = Modifier.fillMaxWidth().height(170.dp),
             )
         }
 
         HeroHeader(
             title = tr(language.code, "welcome_title"),
-            subtitle = tr(language.code, "welcome_subtitle")
+            subtitle = tr(language.code, "welcome_subtitle"),
         )
 
         SectionCard {
@@ -67,24 +67,34 @@ fun WelcomeScreen(
                 options = appLanguages.map { it.label },
                 onSelected = { selected ->
                     appLanguages.firstOrNull { it.label == selected }?.let(onLanguageChange)
-                }
+                },
             )
         }
 
         SectionCard {
-            FeatureLine(tr(language.code, "feature_details"), tr(language.code, "feature_details_body"), Icons.Default.HomeWork)
-            FeatureLine(tr(language.code, "feature_model"), tr(language.code, "feature_model_body"), Icons.Default.Insights)
-            FeatureLine(tr(language.code, "feature_save"), tr(language.code, "feature_save_body"), Icons.Default.Save)
+            WelcomeFeature(
+                tr(language.code, "feature_details"),
+                tr(language.code, "feature_details_body"),
+                Icons.Default.HomeWork,
+            )
+            WelcomeFeature(
+                tr(language.code, "feature_model"),
+                tr(language.code, "feature_model_body"),
+                Icons.Default.Insights,
+            )
         }
 
-        Spacer(modifier = Modifier.weight(1f))
         PrimaryButton(text = tr(language.code, "start"), onClick = onStart)
     }
 }
 
 @Composable
-private fun FeatureLine(title: String, detail: String, icon: androidx.compose.ui.graphics.vector.ImageVector) {
-    androidx.compose.foundation.layout.Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+private fun WelcomeFeature(
+    title: String,
+    detail: String,
+    icon: androidx.compose.ui.graphics.vector.ImageVector,
+) {
+    Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
         Icon(icon, contentDescription = title, tint = Mint)
         Column {
             Text(title, fontWeight = FontWeight.Black, fontSize = 16.sp)

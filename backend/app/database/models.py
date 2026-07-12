@@ -60,3 +60,15 @@ class Favorite(Base):
     user_id = Column(Integer, ForeignKey("users.id"))
     property_id = Column(Integer, ForeignKey("properties.id"))
     created_at = Column(DateTime, server_default=func.now())
+
+
+class Feedback(Base):
+    __tablename__ = "feedback"
+
+    id = Column(Integer, primary_key=True, index=True)
+    message = Column(Text, nullable=False)
+    language = Column(String(20), nullable=False, default="en")
+    app_version = Column(String(30), nullable=True)
+    platform = Column(String(30), nullable=False, default="android")
+    current_screen = Column(String(50), nullable=True)
+    created_at = Column(DateTime, server_default=func.now(), nullable=False)
